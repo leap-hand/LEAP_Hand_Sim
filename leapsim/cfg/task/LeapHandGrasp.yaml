@@ -1,0 +1,40 @@
+# --------------------------------------------------------
+# LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning
+# https://arxiv.org/abs/2309.06440
+# Copyright (c) 2023 Ananye Agarwal
+# Licensed under The MIT License [see LICENSE for details]
+# --------------------------------------------------------
+# Based on: IsaacGymEnvs
+# Copyright (c) 2018-2022, NVIDIA Corporation
+# Licence under BSD 3-Clause License
+# https://github.com/NVIDIA-Omniverse/IsaacGymEnvs/
+# --------------------------------------------------------
+
+name: LeapHandGrasp
+
+defaults:
+  - LeapHandRot
+
+env:
+  controller:
+    controlFrequencyInv: 8
+  
+  episodeLength: 50
+  genGrasps: True
+
+  disable_actions: True
+
+  randomization:
+    randomizeMass: True
+    randomizeMassLower: 0.05
+    randomizeMassUpper: 0.051
+    randomizeCOM: False
+    randomizeFriction: False
+    randomizeScale: False
+    randomizePDGains: False
+
+  
+
+
+
+
