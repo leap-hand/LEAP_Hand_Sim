@@ -22,6 +22,7 @@ Clone and install leapsim python packages
 ```
 git clone https://github.com/leap-hand/LEAP_Hand_Sim
 cd LEAP_Hand_Sim
+pip install gitpython numpy==1.20.3
 pip install -e .
 ```
 ## Running a pretrained policy
