@@ -8,7 +8,6 @@ Setup a conda environment (optional)
 ```
 conda create -n leapsim python=3.8
 conda activate leapsim
-pip install matplotlib
 ```
 Install Pytorch using [these instructions](https://pytorch.org/get-started/locally/)
 
@@ -22,7 +21,7 @@ Clone and install leapsim python packages
 ```
 git clone https://github.com/leap-hand/LEAP_Hand_Sim
 cd LEAP_Hand_Sim
-pip install gitpython numpy==1.20.3
+pip install matplotlib gitpython numpy==1.20.3 wandb
 pip install -e .
 ```
 ## Running a pretrained policy
@@ -58,13 +57,17 @@ done
 This will generate `.npy` files in the `leapsim/cache` folder. Next, train a policy using this grasp cache
 
 ```
-python3 train.py task=LeapHandRot max_iterations=10000 task.env.grasp_cache_name=custom_grasp_cache
+python3 train.py task=LeapHandRot max_iterations=1000 task.env.grasp_cache_name=custom_grasp_cache
 ```
 
-If you wish to not use wandb 
+If you wish to not use wandb append `wandb_activate=false`
 
 ```
-python3 train.py task=LeapHandRot max_iterations=10000 task.env.grasp_cache_name=custom_grasp_cache wandb_activate=false
+for cube_scale in 0.9 0.95 1.0 1.05 1.1 
+do
+	bash scripts/gen_grasp.sh $cube_scale custom_grasp_cache num_envs=1024 wandb_activate=false
+done
+python3 train.py task=LeapHandRot max_iterations=1000 task.env.grasp_cache_name=custom_grasp_cache wandb_activate=false
 ```
 
 After training, the policy can be visualized by running

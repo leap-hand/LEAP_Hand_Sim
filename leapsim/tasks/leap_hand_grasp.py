@@ -56,13 +56,11 @@ class LeapHandGrasp(LeapHandRot):
                 for p in prop:
                     p.mass = np.random.uniform(lower, upper)
                 self.gym.set_actor_rigid_body_properties(env, handle, prop)
-                self._update_priv_buf(env_id=env_id, name='obj_mass', value=prop[0].mass, lower=0, upper=0.2)
         else:
             for env_id in env_ids:
                 env = self.envs[env_id]
                 handle = self.gym.find_actor_handle(env, 'object')
                 prop = self.gym.get_actor_rigid_body_properties(env, handle)
-                self._update_priv_buf(env_id=env_id, name='obj_mass', value=prop[0].mass, lower=0, upper=0.2)
 
         if self.randomize_pd_gains:
             self.p_gain[env_ids] = torch_rand_float(
@@ -122,9 +120,6 @@ class LeapHandGrasp(LeapHandRot):
         self.progress_buf[env_ids] = 0
         self.obs_buf[env_ids] = 0
         self.rb_forces[env_ids] = 0
-        self.priv_info_buf[env_ids, 0:3] = 0
-        self.proprio_hist_buf[env_ids] = 0
-
         self.at_reset_buf[env_ids] = 1
 
     def compute_reward(self, actions):
