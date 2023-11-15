@@ -35,7 +35,7 @@ python3 train.py wandb_activate=false num_envs=1 headless=false test=true task=L
 ## Real-world deployment
 - Running in the real world requires our [LEAP Hand ROS API](https://github.com/leap-hand/LEAP_Hand_API/tree/main/ros_module).
 - Follow the instructions in the above link and then run ```roslaunch example.launch``` first.  The hand should go to the home pose.
-- Next, run deploy.py using:
+- Next, in a separate window run deploy.py using:
 ```
 cd leapsim
 python3 deploy.py wandb_activate=false num_envs=1 headless=false test=true task=LeapHandRot checkpoint=runs/pretrained/nn/LeapHand.pth
