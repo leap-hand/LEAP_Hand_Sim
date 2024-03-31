@@ -78,7 +78,7 @@ python3 train.py wandb_activate=false num_envs=1 headless=false test=true task=L
 For training details of this policy refer to the LEAP hand [paper](https://arxiv.org/abs/2309.06440) section VI-D. 
 
 ## Citing
-If you find LEAP hand or this codebase useul in your research, 	please cite: 
+If you find LEAP hand or this codebase useful in your research, please cite: 
 ```
 @article{
 	shaw2023leaphand,
